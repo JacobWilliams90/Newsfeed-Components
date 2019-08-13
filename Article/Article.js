@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Test Article',
+    date: 'Aug 13th, 2019',
+    firstParagraph: `This is the first paragraph`,
+    secondParagraph: `and this is the second...`,
+    thirdParagraph: `but this is the thrid...`,
   }
 ];
 
@@ -112,33 +119,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
-function pCreator(text) {
-  const p = document.createElement('p')
-  p.textContent = text
 
-  return p
-}
 
-const h2 = document.createElement('h2')
-const span = document.createElement('span')
-const p = document.createElement('p')
-
-function template(a, b, c, d, e) {
-  const div = document.createElement('div')
-
-  div.classList.add('article')
-  p.classList.add('date')
-  div.appendChild(h2)
-  h2.textContent = a
-  div.appendChild(p)
-  p.textContent = b
-  div.appendChild(pCreator(c))
-  div.appendChild(pCreator(d))
-  div.appendChild(pCreator(e))
-  div.appendChild(span)
+function template(obj) {
+  let art = document.createElement('div')
+  art.classList.add('article')
+  let h2 = document.createElement('h2')
+  h2.textContent = obj.title
+  art.appendChild(h2)
+  let date = document.createElement('p')
+  date.classList.add('date')
+  date.textContent = obj.date
+  art.appendChild(date)
+  let p1 = document.createElement('p')
+  p1.textContent = obj.firstParagraph
+  art.appendChild(p1)
+  let p2 = document.createElement('p')
+  p2.textContent = obj.secondParagraph
+  art.appendChild(p2)
+  let p3 = document.createElement('p')
+  p3.textContent = obj.thirdParagraph
+  art.appendChild(p3)
+  let span = document.createElement('span')
   span.classList.add('expandButton')
+  span.textContent = 'Open this article!'
+  span.addEventListener('click', event => {
+    art.classList.toggle('article-open')
 
-return div
+    if (span.textContent === 'Open this article!') {
+      span.textContent = 'Close This Article'
+    }
+    else {
+      span.textContent = 'Open this article!'
+    }
+
+  })
+  art.appendChild(span)
+  return art
 }
 
-template();
+const container = document.querySelector('.articles')
+
+data.map(data => {
+  return container.appendChild(template(data))
+})
