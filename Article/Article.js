@@ -123,38 +123,40 @@ const data = [
 
 function template(obj) {
   let art = document.createElement('div')
-  art.classList.add('article')
   let h2 = document.createElement('h2')
-  h2.textContent = obj.title
-  art.appendChild(h2)
   let date = document.createElement('p')
+  let p1 = document.createElement('p')
+  let p2 = document.createElement('p')
+  let p3 = document.createElement('p')
+  let span = document.createElement('span')
+  
+  art.classList.add('article')
+  h2.textContent = obj.title
   date.classList.add('date')
   date.textContent = obj.date
-  art.appendChild(date)
-  let p1 = document.createElement('p')
   p1.textContent = obj.firstParagraph
-  art.appendChild(p1)
-  let p2 = document.createElement('p')
   p2.textContent = obj.secondParagraph
-  art.appendChild(p2)
-  let p3 = document.createElement('p')
   p3.textContent = obj.thirdParagraph
-  art.appendChild(p3)
-  let span = document.createElement('span')
   span.classList.add('expandButton')
   span.textContent = 'Open this article!'
   span.addEventListener('click', event => {
     art.classList.toggle('article-open')
-
+    
     if (span.textContent === 'Open this article!') {
       span.textContent = 'Close This Article'
     }
     else {
       span.textContent = 'Open this article!'
-    }
-
+    } 
   })
+
+  art.appendChild(h2)
+  art.appendChild(date)
+  art.appendChild(p1)
+  art.appendChild(p2)
+  art.appendChild(p3)
   art.appendChild(span)
+
   return art
 }
 
