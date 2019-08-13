@@ -112,3 +112,33 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+function pCreator(text) {
+  const p = document.createElement('p')
+  p.textContent = text
+
+  return p
+}
+
+const h2 = document.createElement('h2')
+const span = document.createElement('span')
+const p = document.createElement('p')
+
+function template(a, b, c, d, e) {
+  const div = document.createElement('div')
+
+  div.classList.add('article')
+  p.classList.add('date')
+  div.appendChild(h2)
+  h2.textContent = a
+  div.appendChild(p)
+  p.textContent = b
+  div.appendChild(pCreator(c))
+  div.appendChild(pCreator(d))
+  div.appendChild(pCreator(e))
+  div.appendChild(span)
+  span.classList.add('expandButton')
+
+return div
+}
+
+template();
