@@ -120,7 +120,6 @@ const data = [
 
 */
 
-
 function template(obj) {
   let art = document.createElement('div')
   let h2 = document.createElement('h2')
@@ -148,6 +147,8 @@ function template(obj) {
     else {
       span.textContent = 'Open this article!'
     } 
+
+
   })
 
   art.appendChild(h2)
@@ -165,3 +166,5 @@ const container = document.querySelector('.articles')
 data.map(data => {
   return container.appendChild(template(data))
 })
+
+

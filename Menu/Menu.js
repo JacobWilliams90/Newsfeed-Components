@@ -66,6 +66,7 @@ let menuBttn = document.querySelector('.menu-button');
 
 menuBttn.addEventListener('click', event => {
    newMenu.classList.toggle('menu--open');
+   TweenMax.fromTo('.menu', .5, {xPercent: -50}, {xPercent: 0})
 });
 
 let headerDiv = document.querySelector(".header");
