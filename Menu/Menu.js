@@ -33,3 +33,42 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+
+function menuComp(items){
+  let div = document.createElement('div')
+  div.classList.add('menu')
+  let ul = document.createElement('ul')
+  let a = document.createElement('li')
+  let b = document.createElement('li')
+  let c = document.createElement('li')
+  let d = document.createElement('li')
+  let e = document.createElement('li')
+  let f = document.createElement('li')
+  a.textContent = menuItems[0]
+  b.textContent = menuItems[1]
+  c.textContent = menuItems[2]
+  d.textContent = menuItems[3]
+  e.textContent = menuItems[4]
+  f.textContent = menuItems[5]
+  ul.appendChild(a)
+  ul.appendChild(b)
+  ul.appendChild(c)
+  ul.appendChild(d)
+  ul.appendChild(e)
+  ul.appendChild(f)
+  div.appendChild(ul)
+  return div
+};
+
+let newMenu = menuComp(menuItems);
+let menuBttn = document.querySelector('.menu-button');
+
+menuBttn.addEventListener('click', event => {
+   newMenu.classList.toggle('menu--open');
+   TweenMax.fromTo('.menu', .5, {xPercent: -50}, {xPercent: 0})
+});
+
+let headerDiv = document.querySelector(".header");
+
+headerDiv.prepend(newMenu);

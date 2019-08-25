@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Test Article',
+    date: 'Aug 13th, 2019',
+    firstParagraph: `This is the first paragraph`,
+    secondParagraph: `and this is the second...`,
+    thirdParagraph: `but this is the thrid...`,
   }
 ];
 
@@ -112,3 +119,52 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+function template(obj) {
+  let art = document.createElement('div')
+  let h2 = document.createElement('h2')
+  let date = document.createElement('p')
+  let p1 = document.createElement('p')
+  let p2 = document.createElement('p')
+  let p3 = document.createElement('p')
+  let span = document.createElement('span')
+  
+  art.classList.add('article')
+  h2.textContent = obj.title
+  date.classList.add('date')
+  date.textContent = obj.date
+  p1.textContent = obj.firstParagraph
+  p2.textContent = obj.secondParagraph
+  p3.textContent = obj.thirdParagraph
+  span.classList.add('expandButton')
+  span.textContent = 'Open this article!'
+  span.addEventListener('click', event => {
+    art.classList.toggle('article-open')
+    
+    if (span.textContent === 'Open this article!') {
+      span.textContent = 'Close This Article'
+    }
+    else {
+      span.textContent = 'Open this article!'
+    } 
+
+
+  })
+
+  art.appendChild(h2)
+  art.appendChild(date)
+  art.appendChild(p1)
+  art.appendChild(p2)
+  art.appendChild(p3)
+  art.appendChild(span)
+
+  return art
+}
+
+const container = document.querySelector('.articles')
+
+data.map(data => {
+  return container.appendChild(template(data))
+})
+
+
